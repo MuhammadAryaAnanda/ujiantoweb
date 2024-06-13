@@ -1,0 +1,9 @@
+.quiz-title {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  line-height: 2.25rem;
+  font-family: "Roboto";
+  font-weight: 500;
+}

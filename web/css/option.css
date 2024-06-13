@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  --primary-color: #8eafaa;
+
+  --text-color: rgba(193, 226, 221, 60%);
+  --text-color-hover: rgba(193, 226, 221, 100%);
+  --text-color-checked: #f24a08;
+
+  --radio-icon-field: 48px;
+  --radio-icon-size: 20px;
+}
+
+.radio-option {
+  max-width: 100%;
+
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  padding: 24px;
+}
+
+.option {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* Hide the Default Radio Buttons */
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Custom Radio Buttons */
+.option input[type="radio"] ~ label {
+  --radio-icon-border: 2px;
+  --radio-icon-inner: calc(
+    var(--radio-icon-size) - 4 * var(--radio-icon-border)
+  );
+  --radio-target-field: calc(
+    (var(--radio-icon-field) - var(--radio-icon-size)) / 2
+  );
+
+  cursor: pointer;
+  position: relative;
+  padding-left: calc(
+    var(--radio-icon-field) - var(--radio-target-field) + var(--gap)
+  );
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.option input[type="radio"] ~ label::before,
+.option input[type="radio"] ~ label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+
+.option input[type="radio"] ~ label::before {
+  left: 0;
+  width: var(--radio-icon-size);
+  height: var(--radio-icon-size);
+  border: var(--radio-icon-border) solid var(--primary-color);
+}
+
+.option input[type="radio"] ~ label:hover::before {
+  box-shadow: 0px 0px 0px var(--radio-target-field) rgba(0, 0, 0, 0.1);
+}
+
+.option input[type="radio"] ~ label::after {
+  left: calc(var(--radio-icon-border) * 2);
+  width: var(--radio-icon-inner);
+  height: var(--radio-icon-inner);
+  opacity: 0;
+  transform: translateY(-50%) scale(0);
+  background-color: var(--primary-color);
+}
+
+.option input[type="radio"]:checked + label::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.option input[type="radio"]:hover ~ label {
+  color: var(--text-color-hover);
+}
+
+.option input[type="radio"]:checked ~ label {
+  color: var(--text-color-checked);
+}

@@ -1,0 +1,45 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/** @var yii\web\View $this */
+/** @var app\models\ExamResults $model */
+
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Exam Results', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
+?>
+<div class="exam-results-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'exam_id',
+            'student_id',
+            'skor',
+            'waktu_selesai',
+            'jlh_benar_essay',
+            'jlh_benar_pilgan',
+            'tgl_mulai',
+            'skor_essay',
+            'skor_pilgan',
+        ],
+    ]) ?>
+
+</div>
